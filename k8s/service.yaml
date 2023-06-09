@@ -3,12 +3,14 @@ kind: Service
 metadata:
   name: ping-pong-server
   annotations:
-    cloud.google.com/app-protocols: '{"grpc":"HTTP2", "hc-web": "HTTP"}'
-    service.alpha.kubernetes.io/app-protocols: '{"grpc":"HTTP2", "hc-web": "HTTP"}'
+    cloud.google.com/app-protocols: '{"grpc":"HTTP2"}'
+    cloud.google.com/load-balancer-type: "External"
 spec:
+  type: LoadBalancer
   selector:
     app: ping-pong-server
   ports:
-    - name: grpc
-      port: 50051  # Replace with the gRPC server port of your Go application
+    - port: 50051
       targetPort: 50051
+      protocol: TCP
+      name: grpc

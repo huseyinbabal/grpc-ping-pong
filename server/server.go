@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"github.com/huseyinbabal/grpc-ping-pong/pingpong"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
 	"io"
 	"log"
 	"net"
@@ -40,14 +42,20 @@ func (s *pingPongServer) Ping(stream pingpong.PingPongService_PingServer) error 
 func main() {
 	flag.Parse()
 
+	var opts []grpc.ServerOption
+	grpcServer := grpc.NewServer(opts...)
+
+	healthServer := health.NewServer()
+	healthServer.SetServingStatus("grpc.health.v1.pingpong", grpc_health_v1.HealthCheckResponse_SERVING)
+	grpc_health_v1.RegisterHealthServer(grpcServer, healthServer)
+
+	pingpong.RegisterPingPongServiceServer(grpcServer, newPingPongServer())
+
 	listen, listenErr := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if listenErr != nil {
 		log.Fatalf("Failed to listen %v", listenErr)
 	}
 
-	var opts []grpc.ServerOption
-	grpcServer := grpc.NewServer(opts...)
-	pingpong.RegisterPingPongServiceServer(grpcServer, newPingPongServer())
 	err := grpcServer.Serve(listen)
 	if err != nil {
 		log.Fatalf("Failed to serve %v", err)

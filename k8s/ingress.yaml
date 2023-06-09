@@ -2,8 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ping-pong-server
-  annotations:
-    kubernetes.io/ingress.allow-http: "false"
 spec:
   rules:
     - http:

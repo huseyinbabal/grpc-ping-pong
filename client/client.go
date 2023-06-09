@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	serverAddr = flag.String("server_addr", "34.160.25.45:80", "gRPC server address")
+	serverAddr = flag.String("server_addr", "localhost:50051", "gRPC server address")
 	messages   = []string{
 		"Hello!",
 		"Welcome!",
