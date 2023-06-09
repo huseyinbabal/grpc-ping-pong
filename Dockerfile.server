@@ -1,4 +1,3 @@
-FROM alpine:latest
-WORKDIR /app
-COPY ping-pong-server /app/ping-pong-server
-ENTRYPOINT ["/app/ping-pong-server"]
+FROM scratch
+COPY ping-pong-server /
+ENTRYPOINT ["/ping-pong-server"]
