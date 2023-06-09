@@ -10,7 +10,7 @@ import (
 	"net"
 )
 
-var port = flag.Int("port", 10000, "Server port")
+var port = flag.Int("port", 50051, "Server port")
 
 type pingPongServer struct {
 	pingpong.UnimplementedPingPongServiceServer

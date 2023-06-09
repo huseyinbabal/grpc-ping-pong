@@ -2,10 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ping-pong-server
+  annotations:
+    cloud.google.com/app-protocols: '{"grpc":"HTTP2", "hc-web": "HTTP"}'
+    service.alpha.kubernetes.io/app-protocols: '{"grpc":"HTTP2", "hc-web": "HTTP"}'
 spec:
   selector:
     app: ping-pong-server
   ports:
     - name: grpc
-      port: 10000  # Replace with the gRPC server port of your Go application
-      targetPort: 10000
+      port: 50051  # Replace with the gRPC server port of your Go application
+      targetPort: 50051

@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	serverAddr = flag.String("server_addr", "localhost:10000", "gRPC server address")
+	serverAddr = flag.String("server_addr", "34.160.25.45:80", "gRPC server address")
 	messages   = []string{
 		"Hello!",
 		"Welcome!",
@@ -37,7 +37,7 @@ func main() {
 
 	client := pingpong.NewPingPongServiceClient(conn)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
 	stream, streamErr := client.Ping(ctx)

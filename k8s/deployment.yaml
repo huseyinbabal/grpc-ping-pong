@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: ping-pong-server
-          image: ghcr.io/huseyinbabal/ping-pong-server:v1.0.14  # Replace with your Docker image details
+          image: ghcr.io/huseyinbabal/ping-pong-server:v1.0.15  # Replace with your Docker image details
           ports:
-            - containerPort: 10000  # Replace with the gRPC server port of your Go application
+            - containerPort: 50051  # Replace with the gRPC server port of your Go application

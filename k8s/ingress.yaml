@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: ping-pong-server
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"  # Disable SSL redirect if not using HTTPS
+    kubernetes.io/ingress.allow-http: "false"
 spec:
   rules:
     - http:
@@ -14,4 +14,4 @@ spec:
               service:
                 name: ping-pong-server
                 port:
-                  number: 10000
+                  number: 50051
