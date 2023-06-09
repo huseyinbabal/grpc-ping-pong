@@ -54,7 +54,7 @@ func main() {
 			msg := generateRandomMessage()
 			req := pingpong.PingRequest{Message: msg}
 			if err := stream.Send(&req); err != nil {
-				log.Fatalf("Cannot send %v", req)
+				log.Printf("Cannot send %v", msg)
 			}
 			time.Sleep(time.Second * 2)
 		}

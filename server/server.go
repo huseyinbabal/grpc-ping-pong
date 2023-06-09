@@ -48,5 +48,8 @@ func main() {
 	var opts []grpc.ServerOption
 	grpcServer := grpc.NewServer(opts...)
 	pingpong.RegisterPingPongServiceServer(grpcServer, newPingPongServer())
-	grpcServer.Serve(listen)
+	err := grpcServer.Serve(listen)
+	if err != nil {
+		log.Fatalf("Failed to serve %v", err)
+	}
 }
