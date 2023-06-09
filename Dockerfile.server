@@ -5,6 +5,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN ls -al
+
 RUN CGO_ENABLED=0 go build -o pingpongserver server/server.go
 
 FROM scratch
