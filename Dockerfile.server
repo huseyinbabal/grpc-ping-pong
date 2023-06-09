@@ -1,3 +1,14 @@
+# Dockerfile
+FROM golang:1.20-alpine AS builder
+
+WORKDIR /app
+
+COPY . .
+
+RUN CGO_ENABLED=0 go build -o pingpongserver server/server.go
+
 FROM scratch
-COPY ping-pong-server /
-ENTRYPOINT ["/ping-pong-server"]
+
+COPY --from=builder /app/pingpongserver /pingpongserver
+
+ENTRYPOINT ["/pingpongserver"]
