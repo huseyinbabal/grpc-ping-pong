@@ -19,3 +19,4 @@ dockers:
       - "--build-arg=module=ping-pong-server"
       - "--label=org.opencontainers.image.source=https://github.com/huseyinbabal/grpc-ping-pong"
     skip_push: false
+    dockerfile: Dockerfile.server
