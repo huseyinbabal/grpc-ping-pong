@@ -4,4 +4,4 @@ COPY . .
 
 RUN ls -al
 
-ENTRYPOINT ["./pingpongserver"]
+ENTRYPOINT ["/pingpongserver"]
