@@ -14,7 +14,7 @@ dockers:
     ids:
       - ping-pong-server
     image_templates:
-      - "ghcr.io/huseyinbabal/ping-pong-server:{{.Commit}}"
+      - "ghcr.io/huseyinbabal/ping-pong-server:{{.Tag}}"
     build_flag_templates:
       - "--build-arg=module=ping-pong-server"
       - "--label=org.opencontainers.image.source=https://github.com/huseyinbabal/grpc-ping-pong"
