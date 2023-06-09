@@ -2,8 +2,4 @@ FROM alpine:latest
 
 COPY . .
 
-RUN ls -al
-
-RUN ["chmod", "+x", "./pingpongserver"]
-
 ENTRYPOINT ["./pingpongserver"]
