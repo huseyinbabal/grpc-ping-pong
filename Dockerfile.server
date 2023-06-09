@@ -1,4 +1,4 @@
 FROM scratch
 ARG module
-COPY $module /$module
-ENTRYPOINT ["/${module}"]
+COPY ping-pong-server /ping-pong-server
+ENTRYPOINT ["/ping-pong-server"]

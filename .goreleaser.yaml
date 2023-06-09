@@ -16,7 +16,6 @@ dockers:
     image_templates:
       - "ghcr.io/huseyinbabal/ping-pong-server:{{.Tag}}"
     build_flag_templates:
-      - "--build-arg=module=ping-pong-server"
       - "--label=org.opencontainers.image.source=https://github.com/huseyinbabal/grpc-ping-pong"
     skip_push: false
     dockerfile: Dockerfile.server

@@ -2,19 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment
+  name: ping-pong-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: ping-pong-server
   template:
     metadata:
       labels:
-        app: myapp
+        app: ping-pong-server
     spec:
       containers:
-        - name: myapp-container
-          image: your-docker-repo/myapp-image:latest  # Replace with your Docker image details
+        - name: ping-pong-server
+          image: ghcr.io/huseyinbabal/ping-pong-server:v1.0.1  # Replace with your Docker image details
           ports:
             - containerPort: 10000  # Replace with the gRPC server port of your Go application
+          args:
+            - "--module=ping-pong-server"
