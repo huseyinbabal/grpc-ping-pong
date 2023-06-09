@@ -1,4 +1,4 @@
 FROM alpine:latest
 WORKDIR /app
-COPY ping-pong-server ./ping-pong-server
-ENTRYPOINT ["./ping-pong-server"]
+COPY ping-pong-server /app/ping-pong-server
+ENTRYPOINT ["/app/ping-pong-server"]
