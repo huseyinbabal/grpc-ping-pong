@@ -4,4 +4,6 @@ COPY . .
 
 RUN ls -al
 
-ENTRYPOINT ["/pingpongserver"]
+RUN ["chmod", "+x", "./pingpongserver"]
+
+ENTRYPOINT ["./pingpongserver"]
