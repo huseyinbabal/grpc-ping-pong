@@ -1,18 +1,18 @@
 builds:
-  - id: ping-pong-server
+  - id: pingpongserver
     main: server/server.go
-    binary: ping-pong-server
+    binary: pingpongserver
     goos:
       - linux
     goarch:
       - amd64
 
 dockers:
-  - id: ping-pong-server
+  - id: pingpongserver
     goos: linux
     goarch: amd64
     ids:
-      - ping-pong-server
+      - pingpongserver
     image_templates:
       - "ghcr.io/huseyinbabal/ping-pong-server:{{.Tag}}"
     build_flag_templates:
